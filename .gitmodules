@@ -1,0 +1,15 @@
+[submodule "exec"]
+	path = exec
+	url = https://github.com/archmachina/cicd-exec
+[submodule "source/roles/nms"]
+	path = source/playbook/roles/nms
+	url = https://github.com/archmachina/ansible-role-nms
+[submodule "source/roles/base"]
+	path = source/playbook/roles/base
+	url = https://github.com/archmachina/ansible-role-base
+[submodule "source/roles/docker"]
+	path = source/playbook/roles/docker
+	url = https://github.com/archmachina/ansible-role-docker
+[submodule "source/exec"]
+	path = source/playbook/exec
+	url = https://github.com/archmachina/cicd-exec
