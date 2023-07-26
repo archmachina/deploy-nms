@@ -11,8 +11,26 @@
       block:
         - include_role:
             name: base
+  tags:
+    - base_role
+  environment:
+    http_proxy: "{{ http_proxy | default('') }}"
+    https_proxy: "{{ https_proxy | default('') }}"
+    no_proxy: "{{ no_proxy | default('') }}"
+
+# Install base roles that are required for all systems
+- hosts: nms
+  become: true
+  become_method: sudo
+  become_user: root
+  any_errors_fatal: true
+  tasks:
+    - when: "apply|default(false)"
+      block:
         - include_role:
             name: docker
+  tags:
+    - docker_role
   environment:
     http_proxy: "{{ http_proxy | default('') }}"
     https_proxy: "{{ https_proxy | default('') }}"
@@ -37,7 +55,16 @@
 
         - include_role:
             name: nms
+  tags:
+    - nms_role
   environment:
     http_proxy: "{{ http_proxy | default('') }}"
     https_proxy: "{{ https_proxy | default('') }}"
     no_proxy: "{{ no_proxy | default('') }}"
+
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Finished
+      debug:
+        msg: Finished deployment
