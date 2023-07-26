@@ -61,10 +61,3 @@
     http_proxy: "{{ http_proxy | default('') }}"
     https_proxy: "{{ https_proxy | default('') }}"
     no_proxy: "{{ no_proxy | default('') }}"
-
-- hosts: localhost
-  connection: local
-  tasks:
-    - name: Finished
-      debug:
-        msg: Finished deployment
