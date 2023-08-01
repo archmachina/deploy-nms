@@ -1,7 +1,7 @@
 ---
 
 # Install base roles that are required for all systems
-- hosts: nms
+- hosts: deploy_nms
   become: true
   become_method: sudo
   become_user: root
