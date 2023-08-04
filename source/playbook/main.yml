@@ -7,18 +7,16 @@
   become_user: root
   any_errors_fatal: true
   tasks:
-    - when: "apply|default(false)"
-      block:
-        - name: Create data root
-          file:
-            state: directory
-            path: "{{ nms_data_root }}"
-            owner: root
-            group: root
-            mode: "0755"
+    - name: Create data root
+      file:
+        state: directory
+        path: "{{ nms_data_root }}"
+        owner: root
+        group: root
+        mode: "0755"
 
-        - include_role:
-            name: nms
+    - include_role:
+        name: nms
   environment:
     http_proxy: "{{ http_proxy | default('') }}"
     https_proxy: "{{ https_proxy | default('') }}"
